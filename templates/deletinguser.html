@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <title>ADMIN | Delete User </title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lustyle.css') }}">
+  </head>
+
+<body class="body">
+  <header>
+		<nav>
+      <h1>Xmoji</h1>
+			<ul id="navli">
+        <li><a href="/adminview" class="homeblack">Dashboard</a></li>
+        <li><a href="/addusers" class="homeblack">Add User</a></li>
+        <li><a href="/deletinguser" class="homered">Delete User</a></li>
+        <li><a class="homeblack" href="/adminlogin">LogOut</a></li>
+			</ul>
+		</nav>
+  </header>
+  <div class="divider"></div>
+  <img src="https://raw.githubusercontent.com/YaswanthKota/emojifypics/main/delete.png" width="55%">
+  <div class="loginbox" style="top: 10%;">
+    <img src="https://img.favpng.com/17/1/20/user-profile-computer-icons-login-png-favpng-w4PDSTJJhQAyy1K6Dbdyjx4XW.jpg" class="avatar" alt="avtar">
+      <h1>Delete User</h1>
+          <form action="{{ url_for('deleteuser') }}" method="post" >
+            <div class="msg">{{ msg }}</div></br></br>
+              <input id="username" name="username" type="text" placeholder="Enter User Username" class="textbox"/></br></br></br>
+              <input id="email" name="email" type="text" placeholder="Enter User Email ID" class="textbox"/></br></br></br></br>
+              <input type="submit" class="btn" value="Delete User"></br>
+              <h1>{{info}}</h1>
+          </form>
+    </div>
+</body>
+</html>

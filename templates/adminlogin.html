@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<title>Login Form</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
+<link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css">
+
+
+
+</head>
+<body>
+  <header>
+		<nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand mr-auto" href="/">XMOJI</a>
+				<div class="collapse navbar-collapse" id="Navbar" >
+					<ul class="navbar-nav" style="margin-left:50%;">
+						<li class="nav-item"><a class="nav-link" href="/"><span class="fa fa-home fa-lg"></span> Home</a></li>
+						&nbsp;	
+						<li class="nav-item"><a class="nav-link" href="./userlogin"><span class="fa fa-address-card fa-lg"></span> user login</a></li>
+            &nbsp;
+            <li class="nav-item active"><a class="nav-link" href="#"><span class="fa fa-address-card fa-lg"></span> Admin Login</a></li>
+
+						<li class="nav-item"><a class="nav-link" href="./register"><span class="fa fa-address-card fa-lg"></span> register</a></li>
+					</ul>
+	
+				</div>
+		  
+			</div>
+	
+		</nav>
+  </header>
+<div class="divider"></div>
+<div class="row">
+<img src="https://raw.githubusercontent.com/YaswanthKota/emojifypics/main/login.png" width="55%">
+    <div class="loginbox" style="top: 0%;">
+    <img src="https://f0.pngfuel.com/png/980/304/man-profile-illustration-computer-icons-user-profile-avatar-png-clip-art.png" class="avatar" alt="avtar">
+        <br><h1>Login Here</h1><br>
+        <form action="{{ url_for('adminlogin')}}"  method="post">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username"><br><br>
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password"><br><br>
+            <input type="submit" name="login" value="Login">
+        </form>
+        <br>
+        <h1> {{info}} </h1>
+    </div>
+    </div>
+
+    <script>
+var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function currentDiv(n) {
+  showDivs(slideIndex = n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  var dots = document.getElementsByClassName("demo");
+  if (n > x.length) {slideIndex = 1}
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" w3-white", "");
+  }
+  x[slideIndex-1].style.display = "block";
+  dots[slideIndex-1].className += " w3-white";
+}
+</script>
+
+
+</body>
+</html>

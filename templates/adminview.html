@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <title>ADMIN</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lustyle.css') }}">
+  <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Emojify\static\css\lustyle.css">
+  <style>
+#users {
+    position: relative;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 95%;
+  left: 40px;
+}
+
+#users td, #users th {
+  border: 1px solid #ddd;
+  background-color: #4CAF50;
+
+  padding: 8px;
+}
+#users th:hover{ background-color: black;}
+#users td:hover {background-color:blanchedalmond;}
+
+#users th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: center;
+  background-color: #ff4d4d;
+  color: white;
+}
+div{
+    left: 50px;
+}
+  </style>
+  </head>
+
+<body class="body">
+  <header>
+		<nav>
+      <h1>Xmoji</h1>
+			<ul id="navli">
+        <li><a href="/adminview" class="homered">Dashboard</a></li>
+                <li><a href="/addusers" class="homeblack">Add User</a></li>
+                <li><a href="/deletinguser" class="homeblack">Delete User</a></li>
+                <li><a class="homeblack" href="/adminlogin">LogOut</a></li>
+			</ul>
+        </nav>
+  </header>
+  <div class="divider"></div>
+  <br>
+  <div>
+  <table id="users">
+    <th>  <b>S.No</b> </th>
+    <th>  <b>Name</b> </th>
+    <th><b>Email</b>  </th>
+    <th><b>Mobile No.</b>  </th>
+    <th><b>Password</b>  </th>
+  {% for row in userslist %}
+    <tr>
+        <td>{{row}}</td>
+        <td>{{userslist[row][0]}}</td>
+        <td>{{userslist[row][1]}}</td>
+        <td>{{userslist[row][2]}}</td>
+        <td>{{userslist[row][3]}}</td>
+    </tr>
+  {% endfor %}
+</table>
+</div>
+</body>
+</html>

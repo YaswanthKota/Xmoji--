@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Xmoji</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/select.css') }}">
+    <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Emojify\static\css\select.css">
+  </head>
+
+<body>
+  <header>
+    <nav>
+      <h1>Xmoji</h1>
+      <ul id="navli">
+        <li><a class="homered" href="/selection">Home</a></li>
+        <li><a class="homeblack" href="/userlogin">LogOut</a></li>
+      </ul>
+        </nav>
+  </header>
+<div class="divider"></div>
+<center>
+<br><br>  <h1 align="center">Welcome to Xmoji  {{ user }}  !</h1><br><br>
+<br><br><br>
+<a class="select" href="/picture">Upload a Photo</a><br><br><br><br><br><br>
+<a class="select" href="/index">Live Webcam</a><br>
+</center>
+
+
+
+
+
+</body>
+</html>

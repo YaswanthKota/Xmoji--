@@ -1,0 +1,77 @@
+<html>
+  <head>
+    <title>Xmoji</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Emojify\static\css\index.css"> -->
+    <style>
+	#bg {
+  	display: inline-block;
+    margin-left :12px;
+    width: 48%;
+    border: 3px solid black;
+	}
+  #emj {
+  	display: inline-block;
+    border: 3px solid black;
+    /* margin-left: 200px; */
+	}
+  #bg2 {
+  	display: inline-block;
+    border: 3px solid black;
+    width: 48%;
+    /* margin-left :125px; */
+	}
+  /* #container {
+  	margin: 0px auto;
+  	width: 500px;
+  	height: 375px;
+  	border: 10px #333 solid;
+  }
+  #bg {
+  	width: 500px;
+  	height: 375px;
+  	background-color: #666;
+  } */
+    </style>
+    </head>
+  <body>
+    <header>
+  		<nav>
+        <h1>Xmoji</h1>
+  			<ul id="navli">
+          <li><a class="homeblack" href="/selection">Home</a></li>
+          <li><a class="homered" href="/picture">Upload Photo</a></li>
+          <li><a class="homeblack" href="/userlogin">LogOut</a></li>
+  			</ul>
+          </nav>
+    </header>
+  <div class="divider"></div>
+  <center>
+    <h1 align="center">Welcome to Xmoji  {{ user }}  !</h1>
+    <!-- <div id="container">
+    	<video autoplay="true" id="bg">
+
+    	</video>
+    </div> -->
+    <img id="bg"  src="{{ url_for('photo_feed') }}">
+    <img id="bg2"  src="{{ url_for('photo_cartoon') }}">
+  </center>
+    <!-- <script>
+    var video = document.querySelector("#bg");
+
+    if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+    }
+    </script> -->
+  </body>
+</html>

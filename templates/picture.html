@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>Xmoji</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/picture.css') }}">
+    <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Emojify\static\css\picture.css">
+  </head>
+
+<body>
+  <header>
+    <nav>
+      <h1>Xmoji</h1>
+      <ul id="navli">
+        <li><a class="homeblack" href="/selection">Home</a></li>
+        <li><a class="homered" href="/picture">Upload Photo</a></li>
+        <li><a class="homeblack" href="/userlogin">LogOut</a></li>
+      </ul>
+        </nav>
+  </header>
+<div class="divider"></div>
+<center><br><br><h1 align="center">Welcome to Xmoji  {{ user }}  !</h1><br><br>
+
+      <form action="{{ url_for('upload') }}" id="upload-file" method="post" enctype="multipart/form-data">
+      <label for="imageUpload" class="btn btn-primary">
+          Upload Image
+      </label><br><br><br>
+      <!-- <div class="image-section">
+          <div class="img-preview">
+              <div id="imagePreview">
+              </div>
+          </div>
+          <div> -->
+      <input type="file" name="file" id="imageUpload" accept=".png, .jpg, .jpeg"><br><br><br>
+      <input type="submit" class="btn btn-info btn-lg " id="btn-predict" value="Predict">
+  </form>
+</center>
+  <!-- <footer>
+      <div class="foot">
+
+          <b>Developed By&nbsp;&nbsp;&nbsp; <a href="https://sarathmajji1699.github.io/SarathMajjiPortfolio/">Sarath Kumar Majji</a></b>
+
+      </div>
+          <script src="{{ url_for('static', filename='js/main.js') }}" type="text/javascript"></script>
+          <script src="C:\Users\sarath\Documents\Python\project\Emojify\static\js\main.js" type="text/javascript"></script>
+  </footer> -->
+</body>
+</html>

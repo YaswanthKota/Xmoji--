@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<title>Login Form</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
+<link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css">
+
+
+</head>
+
+<body>
+  <header>
+		<nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand mr-auto" href="/">XMOJI</a>
+				<div class="collapse navbar-collapse" id="Navbar" >
+					<ul class="navbar-nav" style="margin-left: 60%;">
+						<li class="nav-item"><a class="nav-link" href="/"><span class="fa fa-home fa-lg"></span> Home</a></li>
+						&nbsp;	
+            <li class="nav-item active"><a class="nav-link" href="./userlogin"><span class="fa fa-address-card fa-lg"></span>User login</a></li>
+            <li class="nav-item"><a class="nav-link" href="./adminlogin"><span class="fa fa-address-card fa-lg"></span>Admin Login</a></li>
+
+						</ul>
+	
+				</div>
+		  
+			</div>
+	
+		</nav>
+	</header>
+  <div class="divider"></div>
+  <img src="https://raw.githubusercontent.com/YaswanthKota/emojifypics/main/userlogin.png" width="55%">
+    <div class="loginbox" style="top:5%;height:70%;">
+    <img src="https://img.favpng.com/17/1/20/user-profile-computer-icons-login-png-favpng-w4PDSTJJhQAyy1K6Dbdyjx4XW.jpg" class="avatar" alt="avtar">
+        <br><h1>Login Here</h1><br><br>
+        <form action="{{ url_for('userlogin')}}"  method="post">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username">
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password"><br><br><br>
+            <input type="submit" name="login" value="Login">
+            <p >Don't have an account?<a class="bottom" href="{{url_for('register')}}">&nbsp;&nbsp;&nbsp;Register Here</a></p>
+
+        </form>
+        <br>
+        <h1> {{info}} </h1>
+    </div>
+
+</body>
+</html>
