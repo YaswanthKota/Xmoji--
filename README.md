@@ -50,6 +50,7 @@ Face Detection</li>
 </p>
 <!-- GETTING STARTED -->
 <p>
+  
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
