@@ -10,7 +10,7 @@ scikit-image==0.17.2
 scipy
 tensorboard== 2.0.0
 tensorboard-plugin-wit==1.7.0
-tensorflow==2.0.0
+tensorflow
 tensorflow-estimator==2.0.0
 tornado
 Werkzeug==1.0.1
