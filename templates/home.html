@@ -6,10 +6,13 @@
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat" rel="stylesheet">
   <link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css">
-  <link href="/static/css/style.css" rel="stylesheet"></head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
 <body>
 	<header>
 		<nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+			<div class="divider"></div>
+
 			<div class="container">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
 						<span class="navbar-toggler-icon"></span>
@@ -31,9 +34,10 @@
 			</div>
 	
 		</nav>
-	</header>
 
-	<div class="divider"></div>
+	</header>
+	<div style="background-color: rgb(247, 8, 8); height: 0.25%;">.</div>
+
 	<div id="divimg">
 
 	</div>

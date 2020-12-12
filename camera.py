@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 import pandas as pd
 import sys
+import random
 
 from tensorflow.keras.models import Sequential #for initializing
 from tensorflow.keras.layers import Dense  #adding layers
@@ -11,6 +12,7 @@ from tensorflow.keras.layers import Flatten,Dropout,Flatten
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.preprocessing.image import img_to_array
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.models import load_model
 
 emotion_dict = {0: "   Angry   ", 1: "Disgusted", 2: "  Fearful  ", 3: "   Happy   ", 4: "  Neutral  ", 5: "    Sad    ", 6: "Surprised"}
@@ -21,6 +23,7 @@ emoji_dist_male={0:"./emojis/mangry.png",1:"./emojis/mdisgusted.png",2:"./emojis
 emoji_dist_female={0:"./emojis/fangry.png",1:"./emojis/fdisgusted.png",2:"./emojis/ffearful.png",3:"./emojis/fhappy.png",4:"./emojis/fneutral.png",5:"./emojis/fsad.png",6:"./emojis/fsurpriced.png"}
 
 faceCascade=cv2.CascadeClassifier('Resources/haarcascade_frontalface_default.xml')
+noseCascade=cv2.CascadeClassifier('Resources/haarcascade_mcs_nose.xml')
 
 ageProto="age_deploy.prototxt"
 ageModel="age_net.caffemodel"
@@ -29,6 +32,7 @@ genderModel="gender_net.caffemodel"
 MODEL_MEAN_VALUES=(78.4263377603, 87.7689143744, 114.895847746)
 ageList=['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
 genderList=['Male','Female']
+maskList=['Mask','No Mask']
 
 ageNet=cv2.dnn.readNet(ageModel,ageProto)
 genderNet=cv2.dnn.readNet(genderModel,genderProto)
@@ -36,7 +40,12 @@ emoji = cv2.imread('./emojis/neutral.png')
 cartoon=cv2.imread('./emojis/neutral.png')
 num_down = 2
 num_bilateral = 7
-model = load_model('gender_detection.model')
+rn=0
+model = load_model('gender.h5')
+
+# load the face mask detector model from disk
+maskmodel = load_model("facemask.h5")
+# maskNet = load_model("mask_detector.model")
 
 class VideoCamera(object):
     def __init__(self):
@@ -60,6 +69,8 @@ class VideoCamera(object):
         self.emotion_model.add(Dropout(0.5))
         self.emotion_model.add(Dense(7, activation='softmax'))
         self.emotion_model.load_weights('emotion_model.h5')
+        global rn
+        rn=random.randint(0,5)
 
     def __del__(self):
         self.cap.release()
@@ -92,37 +103,80 @@ class VideoCamera(object):
 
             for (x,y,w,h) in faces:
                 cv2.rectangle(img,(x,y),(x+w,y+h),(255,0,0),2)
-                roi_gray_frame = ig[y:y + h, x:x + w]
-                cropped_img = np.expand_dims(np.expand_dims(cv2.resize(roi_gray_frame, (48, 48)), -1), 0)
-                prediction = self.emotion_model.predict(cropped_img)
-                maxindex = int(np.argmax(prediction))
-
                 face = img[y:y + h, x:x + w].copy()
-                # gblob = cv2.dnn.blobFromImage(face, 1.5, (227, 227), MODEL_MEAN_VALUES, swapRB=True)
-                # genderNet.setInput(gblob)
-                # genderPreds=genderNet.forward()
-                # gender=genderList[genderPreds[0].argmax()]
-                face_crop = cv2.resize(face, (96,96))
-                face_crop = face_crop.astype("float") / 255.0
-                face_crop = img_to_array(face_crop)
-                face_crop = np.expand_dims(face_crop, axis=0)
-                conf = model.predict(face_crop)[0]
-                idx = np.argmax(conf)
-                gender = genderList[idx]
+                gface= ig[y:y + h, x:x + w].copy()
 
-                global emoji
-                if gender=='Male':
-                    emoji=cv2.imread(emoji_dist_male[maxindex])
-                elif gender=='Female':
-                    emoji=cv2.imread(emoji_dist_female[maxindex])
+                face_crop = cv2.resize(gface, (96,96))
+                face_crop=np.expand_dims(face_crop,axis=-1)
+                face_crop=np.expand_dims(face_crop,axis=0)
+                if(np.max(face_crop)>1):
+                    face_crop=face_crop/255.0
+                gen=model.predict_classes(face_crop)
+                gender = genderList[gen[0][0]]
 
                 ablob = cv2.dnn.blobFromImage(face, 1.5, (227, 227), MODEL_MEAN_VALUES, swapRB=False)
                 ageNet.setInput(ablob)
                 agePreds=ageNet.forward()
                 age=ageList[agePreds[0].argmax()]
 
-                cv2.putText(img, emotion_dict[maxindex], (x+20, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
-                cv2.putText(img, f'{gender}, {age}', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2, cv2.LINE_AA)
+                mface = cv2.cvtColor(face, cv2.COLOR_BGR2RGB)
+                mface = cv2.resize(mface, (64,64))
+                # mface = np.expand_dims(mface,axis=-1)
+                mface = np.expand_dims(mface,axis=0)
+                if(np.max(mface)>1):
+                    mface=mface/255.0
+                mout=maskmodel.predict_classes(mface)
+                mask = maskList[mout[0][0]]
+
+                if mask == 'No Mask':
+                    roi_gray_frame = ig[y:y + h, x:x + w]
+                    cropped_img = np.expand_dims(np.expand_dims(cv2.resize(roi_gray_frame, (48, 48)), -1), 0)
+                    prediction = self.emotion_model.predict(cropped_img)
+                    maxindex = int(np.argmax(prediction))
+
+                    global emoji
+                    if gender=='Male':
+                        if age=='(0-2)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        elif age=='(4-6)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        elif age=='(8-12)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        elif age=='(15-20)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        elif age=='(21-32)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        elif age=='(35-43)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        elif age=='(48-53)':
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                        else:
+                            emoji=cv2.imread(emoji_dist_male[maxindex])
+                    elif gender=='Female':
+                        if age=='(0-2)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        elif age=='(4-6)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        elif age=='(8-12)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        elif age=='(15-20)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        elif age=='(21-32)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        elif age=='(35-43)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        elif age=='(48-53)':
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+                        else:
+                            emoji=cv2.imread(emoji_dist_female[maxindex])
+
+                    cv2.putText(img, emotion_dict[maxindex], (x+20, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+                    cv2.putText(img, f'{gender}, {age}, {mask}', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2, cv2.LINE_AA)
+
+                else:
+                    emoji=cv2.imread('./emojis/mmask.jpg')
+                    cv2.putText(img, 'Neutral', (x+20, y-60), cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2, cv2.LINE_AA)
+                    cv2.putText(img, f'{gender}, {age}, {mask}', (x, y-10), cv2.FONT_HERSHEY_SIMPLEX, 0.8, (0,255,255), 2, cv2.LINE_AA)
 
             ret, jpeg = cv2.imencode('.jpg', img)
             return jpeg.tobytes()

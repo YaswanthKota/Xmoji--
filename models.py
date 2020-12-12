@@ -54,6 +54,14 @@ def check(name,pwd):
     else:
         return 'Invalid user'
 
+def give(username):
+    con = sql.connect("database.sqlite")
+    cur = con.cursor()
+    cur.execute("SELECT email FROM Register WHERE username=?",(username,))
+    email=cur.fetchone()
+    return email
+
+    
 
 def checkuser(name,pwd,email,phone):
     con = sql.connect("database.sqlite")
