@@ -27,6 +27,20 @@ Face Detection</li>
 <li>Gender Recognition</li>
 <li>Age Detection</li>
 </ul>
+
+### Built With
+<ul>
+  <li>pandas</li>
+<li>pickleshare</li>
+<li>numpy</li>
+<li>tensorflow</li>
+<li>flask</li>
+<li>cnn</li>
+<li>keras</li>
+<li>open-cv</li>
+<li>smptlib</li>
+<li>sql</li>
+</ul>
     <br />
    <h1> <strong>Description of Project</h1></strong>
    <ul>
