@@ -49,11 +49,12 @@ Face Detection</li>
    <li>We also derive the age, gender attributes of the human being captured through the live cam.</li>
 </p>
 <!-- GETTING STARTED -->
+<p>
 ## Getting Started
 
 To get a local copy up and running follow these simple steps.
 
-### Prerequisites
+## Prerequisites
 
 This is an example of how to list the packages that you need to run this project.
   
@@ -62,7 +63,7 @@ This is an example of how to list the packages that you need to run this project
   cat requirements.txt
   ```
 
-### Installation
+## Installation
 
 1. Clone the repo
    ```sh
@@ -88,3 +89,4 @@ This is an example of how to list the packages that you need to run this project
    ```
 
 _For more examples, please refer to the [Documentation](https://yaswanthkota.github.io/Xmoji-Home/)_
+</p>
