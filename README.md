@@ -48,3 +48,43 @@ Face Detection</li>
    <li>Using OpenCV library we capture the human face through live feed/also we can upload an existing image and then the model generates an emoji according to the expression shown by the human-face or in a picture.</li>
    <li>We also derive the age, gender attributes of the human being captured through the live cam.</li>
 </p>
+<!-- GETTING STARTED -->
+## Getting Started
+
+To get a local copy up and running follow these simple steps.
+
+### Prerequisites
+
+This is an example of how to list the packages that you need to run this project.
+  
+  ```sh
+  cd Xmoji--
+  cat requirements.txt
+  ```
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/YaswanthKota/Xmoji--.git
+   ```
+2. Install required packages
+   ```sh
+   $ pip install -r requirements.txt
+   ```
+
+
+
+<!-- USAGE EXAMPLES -->
+## Usage
+1. Train the Model
+   ```sh
+   $ cd Xmoji--
+   $ python3 train.py
+   ```
+2. Run the Model
+   ```sh
+   $ python3 main.py
+   ```
+
+_For more examples, please refer to the [Documentation](https://yaswanthkota.github.io/Xmoji-Home/)_
