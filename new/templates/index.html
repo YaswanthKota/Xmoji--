@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>Xmoji</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Xmoji\static\css\index.css">
+    <style>
+	#bg {
+  	display: inline-block;
+  	width: 575px;
+    height: 500px;
+    margin-left :12px;
+    border: 3px solid black;
+	}
+  #emj {
+  	display: inline-block;
+  	width: 475px;
+    height: 500px;
+    border: 3px solid black;
+    /* margin-left: 200px; */
+	}
+  #bg2 {
+  	display: inline-block;
+  	width: 430px;
+    height: 500px;
+    border: 3px solid black;
+    /* margin-left :125px; */
+	}
+  /* #container {
+  	margin: 0px auto;
+  	width: 500px;
+  	height: 375px;
+  	border: 10px #333 solid;
+  }
+  #bg {
+  	width: 500px;
+  	height: 375px;
+  	background-color: #666;
+  } */
+    </style>
+    </head>
+  <body>
+    <header>
+  		<nav>
+        <h1>Xmoji</h1>
+  			<ul id="navli">
+          <li><a class="homeblack" href="/selection">Home</a></li>
+          <li><a class="homered" href="/index">Live Webcam</a></li>
+          <li><a class="homeblack" href="/userlogin">LogOut</a></li>
+  			</ul>
+          </nav>
+    </header>
+  <div class="divider"></div>
+    <h1 align="center">Welcome to Xmoji  {{ user }}  !</h1>
+    <!-- <div id="container">
+    	<video autoplay="true" id="bg">
+
+    	</video>
+    </div> -->
+    <img id="bg"  src="{{ url_for('video_feed') }}">
+    <img id="bg2"  src="{{ url_for('video_cartoon') }}">
+    <img id="emj"  src="{{ url_for('video_emj')  }}">
+    <!-- <script>
+    var video = document.querySelector("#bg");
+
+    if (navigator.mediaDevices.getUserMedia) {
+    navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+    }
+    </script> -->
+  </body>
+</html>

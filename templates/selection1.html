@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>Xmoji</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/select.css') }}">
+    <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Emojify\static\css\select.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
+<link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css">
+  </head>
+  <style> 
+    body {
+      background-image: url("https://raw.githubusercontent.com/YaswanthKota/Xmoji--/main/homeimages/bg.jpg");
+      background-repeat: no-repeat, repeat;
+      background-color: #cccccc;
+    }
+    </style>
+<body>
+  <header>
+   <nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+			<div class="divider"></div>
+
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+        <a class="navbar-brand mr-auto" href="/">XMOJI</a>
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+        &nbsp;
+
+				<div class="collapse navbar-collapse" id="Navbar" >
+					<ul class="navbar-nav" style="margin-left: 60%;">
+            &nbsp;
+            <li><a class="nav-link active" href="/selection"><span class="fa fa-window-minimize"></span>Selection</a></li>
+
+            <li><a class="nav-link" href="/userlogin"><span class="fa fa-sign-out fa-lg"></span>LogOut</a></li>
+
+									</ul>
+	
+				</div>
+		  
+			</div>
+	
+		</nav>
+  </header>
+<div class="divider1" style="background-color: rgb(247, 8, 8); height: 1.5%;"> </div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<center>
+<br><br>  <h1 align="center">Welcome to Xmoji  {{ user }}  !</h1><br><br>
+<a class="btn btn-primary btn-lg" href="/picture">Upload a Photo</a>
+<a class="btn btn-dark btn-lg" href="/index">Live Webcam</a><br><br><br>
+
+<a class="btn btn-dark btn-lg" href="/changepass">Change Password</a><br>
+
+</center>
+
+
+
+
+
+</body>
+</html>

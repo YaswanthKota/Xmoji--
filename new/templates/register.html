@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+  <title>Register Form</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/rstyle.css') }}">
+  <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Xmoji\static\css\rstyle.css">
+  </head>
+
+<body class="body">
+  <header>
+		<nav>
+      <h1>Xmoji</h1>
+			<ul id="navli">
+				<li><a class="homeblack" href="/">HOME</a></li>
+        <li><a class="homered" href="/">REGISTER</a></li>
+			</ul>
+		</nav>
+  </header>
+  <div class="divider"></div>
+  <div class="loginbox">
+    <img src="https://img.favpng.com/17/1/20/user-profile-computer-icons-login-png-favpng-w4PDSTJJhQAyy1K6Dbdyjx4XW.jpg" class="avatar" alt="avtar"><br>
+      <h1>Register Here </h1>
+          <form action="{{ url_for('register') }}" method="post" >
+            <div class="msg">{{ msg }}</div>
+              <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox" required/></br>
+              <input id="password" name="password" type="password" placeholder="Enter Your Password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$*-]).{8,}$" class="textbox" required/>
+            <div id="message">
+            <h5>Password must contain the following:</h5>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+            <p id="special" class="invalid">Special character like <b>#?!@$*-</b></p>
+          </div></br>
+              <input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox" required/></br>
+              <input id="phone" name="phone" type="text" placeholder="Enter Your Mobile No." pattern="[789][0-9]{9}" class="textbox" required/>
+              <div id="pmsg">
+              <h5>Enter a valid phone number</h5>
+              </div>
+            </br><br>
+              <input type="submit" class="btn" value="Sign Up">
+              <center><h2>{{info}}</h2>
+              <p >Already have an account?<a class="bottom" href="{{url_for('userlogin')}}">&nbsp;&nbsp;&nbsp;Login here</a></p>
+            </center>
+          </form>
+    </div>
+<script src="{{ url_for('static', filename='js/validate.js') }}" type="text/javascript"></script>
+<script src="C:\Users\sarath\Documents\Python\project\Xmoji\static\js\validate.js" type="text/javascript"></script>
+</body>
+</html>

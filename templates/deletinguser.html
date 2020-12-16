@@ -8,23 +8,34 @@
   <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/lustyle.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
+  <link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css">
   </head>
 
 <body class="body">
   <header>
-		<nav>
-      <h1>Xmoji</h1>
-			<ul id="navli">
-        <li><a href="/adminview" class="homeblack">Dashboard</a></li>
-        <li><a href="/addusers" class="homeblack">Add User</a></li>
-        <li><a href="/deletinguser" class="homered">Delete User</a></li>
-        <li><a class="homeblack" href="/adminlogin">LogOut</a></li>
-			</ul>
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand mr-auto" href="/">XMOJI</a>
+				<div class="collapse navbar-collapse" id="Navbar" >
+					<ul class="navbar-nav" style="margin-left: 50%;">
+						<li class="nav-item "><a class="nav-link" href="/adminview"><span class="fa fa-home fa-lg"></span>Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/addusers"><span class="fa fa-address-card fa-lg"></span>Add User</a></li>
+            <li class="nav-item active"><a class="nav-link" href="./deletinguser"><span class="fa fa-address-card fa-lg"></span>Delete User</a></li>
+            <li class="nav-item"><a class="nav-link" href="./adminlogin"><span class="fa fa-sign-out fa-lg"></span>Logout</a></li>
+						</ul>
+          </div>
+			</div>
+	
 		</nav>
   </header>
-  <div class="divider"></div>
+  <div style="background-color: rgb(247, 8, 8);">.</div>
   <img src="https://raw.githubusercontent.com/YaswanthKota/emojifypics/main/delete.png" width="55%">
-  <div class="loginbox" style="top: 10%;">
+  <div class="loginbox" style="top: 10%; height: 70%;">
     <img src="https://img.favpng.com/17/1/20/user-profile-computer-icons-login-png-favpng-w4PDSTJJhQAyy1K6Dbdyjx4XW.jpg" class="avatar" alt="avtar">
       <h1>Delete User</h1>
           <form action="{{ url_for('deleteuser') }}" method="post" >

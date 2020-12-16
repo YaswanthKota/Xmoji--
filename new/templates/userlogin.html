@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<title>Login Form</title>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lustyle.css') }}">
+<link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Xmoji\static\css\lustyle.css">
+
+</head>
+
+<body>
+  <header>
+		<nav>
+      <h1>Xmoji</h1>
+			<ul id="navli">
+				<li><a class="homeblack" href="/">HOME</a></li>
+				<li><a class="homered" href="/userlogin">USER LOGIN</a></li>
+        <li><a class="homeblack" href="/adminlogin">ADMIN LOGIN</a></li>
+			</ul>
+		</nav>
+	</header>
+  <div class="divider"></div>
+    <div class="loginbox">
+    <img src="https://img.favpng.com/17/1/20/user-profile-computer-icons-login-png-favpng-w4PDSTJJhQAyy1K6Dbdyjx4XW.jpg" class="avatar" alt="avtar">
+        <br><h1>Login Here</h1><br>
+        <form action="{{ url_for('userlogin')}}"  method="post">
+            <p>Username</p>
+            <input type="text" name="username" placeholder="Enter Username"><br><br>
+            <p>Password</p>
+            <input type="password" name="password" placeholder="Enter Password"><br><br>
+            <input type="submit" name="login" value="Login">
+            <center><h3> {{info}} </h3>
+            <p>Forgot password?<a class="bottom" href="{{url_for('passmail')}}">&nbsp;&nbsp;&nbsp;Click Here</a></p>
+            <p style="margin-top: 5px;">Don't have an account?<a class="bottom" href="{{url_for('register')}}">&nbsp;&nbsp;&nbsp;Register Here</a></p>
+          </center>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

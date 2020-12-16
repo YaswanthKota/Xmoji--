@@ -8,14 +8,8 @@
   <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/rstyle.css') }}">
-  <link rel="stylesheet" type="text/css" href="C:\yaswanthfiles\mini project\static\css\rstyle.css">
-  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/select.css') }}">
-    <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Emojify\static\css\select.css">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
+  <link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Xmoji\static\css\rstyle.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
 <link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css">
   </head>
@@ -23,84 +17,36 @@
 <body class="body">
   <header>
     <nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
-      <div class="divider"></div>
-
-      <div class="container">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand mr-auto" href="/">XMOJI</a>
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-        &nbsp;
-
-
-        <div class="collapse navbar-collapse" id="Navbar" >
-          <ul class="navbar-nav" style="margin-left: 60%;">
-            <li class="nav-item"><a class="nav-link" href="/"><span class="fa fa-home fa-lg"></span> Home</a></li>
-            &nbsp;
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand mr-auto" href="/">XMOJI</a>
+				<div class="collapse navbar-collapse" id="Navbar" >
+					<ul class="navbar-nav" style="margin-left: 60%;">
+						<li class="nav-item"><a class="nav-link" href="/"><span class="fa fa-home fa-lg"></span> Home</a></li>
+            &nbsp;	
             <li><a class="nav-link active" href="/register"><span class="fa fa-address-card fa-lg"></span>Register</a></li>
 
-                  </ul>
-  
-        </div>
-      
-      </div>
-  
-    </nav>
-
+						</ul>
+	
+				</div>
+		  
+			</div>
+	
+		</nav>
   </header>
-  <div class="divider1" style="background-color: rgb(247, 8, 8); height: 1.5%;">. </div>
+  <div class="divider"></div>
   <div>
     <img src='https://raw.githubusercontent.com/YaswanthKota/emojifypics/main/register.png' width="55%">
   </div>
-  <div class="loginbox" style="top:10%;height:75%;">
+  <div class="loginbox" style="top:10%;height:73%;">
     <img src="https://img.favpng.com/17/1/20/user-profile-computer-icons-login-png-favpng-w4PDSTJJhQAyy1K6Dbdyjx4XW.jpg" class="avatar" alt="avtar">
+
       <h1>Register Here </h1>
           <form action="{{ url_for('register') }}" method="post" >
             <div class="msg">{{ msg }}</div>
-              <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox" required/></br></br>
+              <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox" required/></br>
               <input id="password" name="password" type="password" placeholder="Enter Your Password" pattern="^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$*-]).{8,}$" class="textbox" required/>
             <div id="message">
             <h5>Password must contain the following:</h5>
@@ -109,19 +55,20 @@
             <p id="number" class="invalid">A <b>number</b></p>
             <p id="length" class="invalid">Minimum <b>8 characters</b></p>
             <p id="special" class="invalid">Special character like <b>#?!@$*-</b></p>
-          </div></br></br>
-              <input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox" required/></br></br>
+          </div></br>
+              <input id="email" name="email" type="text" placeholder="Enter Your Email ID" class="textbox" required/></br>
               <input id="phone" name="phone" type="text" placeholder="Enter Your Mobile No." pattern="[789][0-9]{9}" class="textbox" required/>
               <div id="pmsg">
               <h5>Enter a valid phone number</h5>
               </div>
-              </br></br>
+            </br><br>
               <input type="submit" class="btn" value="Sign Up">
-              <h1>{{info}}</h1>
+              <center><h2>{{info}}</h2>
               <p >Already have an account?<a class="bottom" href="{{url_for('userlogin')}}">&nbsp;&nbsp;&nbsp;Login here</a></p>
-
+            </center>
           </form>
     </div>
 <script src="{{ url_for('static', filename='js/validate.js') }}" type="text/javascript"></script>
-<script src="C:\Users\sarath\Documents\Python\project\Emojify\static\js\validate.js" type="text/javascript"></script>
+<script src="C:\Users\sarath\Documents\Python\project\Xmoji\static\js\validate.js" type="text/javascript"></script>
+</body>
 </html>

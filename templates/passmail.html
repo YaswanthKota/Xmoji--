@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+<title>Email verification</title>
+<link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="{{ url_for('static', filename='css/rstyle.css') }}">
+<link rel="stylesheet" type="text/css" href="C:\Users\sarath\Documents\Python\project\Xmoji\static\css\rstyle.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/lastyle.css') }}">
+<link rel="stylesheet" href="/static/css/bootstrap/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="/static/css/font-awesome/css/font-awesome.css"> 
+
+</head>
+
+<body>
+  <header>
+		<nav class="navbar navbar-dark navbar-expand-sm fixed-top" style="background-color: black;">
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+				</button>
+				<a class="navbar-brand mr-auto" href="/">XMOJI</a>
+				<div class="collapse navbar-collapse" id="Navbar" >
+					<ul class="navbar-nav" style="margin-left: 60%;">
+						&nbsp;	
+
+						</ul>
+	
+				</div>
+		  
+			</div>
+	
+		</nav>
+	</header>
+  <div style="background-color: rgb(247, 8, 8);">.</div>
+  <div class="loginbox" style="top:10%;height:73%;">
+    <br><br><h1>Email Verification for Password Reset</h1><br><br><br>
+        <form action="{{ url_for('passmail') }}"  method="post">
+			<p><h2>Email</h2> </p>  <br>
+
+            <input id="email" type="text" class="textbox" name="email" placeholder="Enter your email id" required/><br><br><br><br>
+            <input type="submit" name="verify" value="Verify">
+        </form>
+        <br>
+    </div>
+
+</body>
+</html>
