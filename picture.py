@@ -48,6 +48,7 @@ emoji = cv2.imread('./emojis/loading.png')
 cartoon=cv2.imread('./emojis/loading.png')
 # model = load_model('gender.h5')
 maskmodel = load_model("facemask.h5")
+maskList=['Mask','No Mask']
 
 class PhotoCamera(object):
     def __init__(self):
